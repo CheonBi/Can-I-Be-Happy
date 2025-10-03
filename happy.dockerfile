@@ -1,18 +1,18 @@
 FROM node:22.20.0 AS builder
  
-WORKDIR ./happy-card
+WORKDIR /app
 
-COPY package.json package-lock.json ./
+COPY happy-card/package.json happy-card/package-lock.json ./
 
 RUN npm install --omit=dev
 
 FROM node:22.20.0
 
-WORKDIR ./happy-card
+WORKDIR /app
 
-COPY --from=builder ./happy-card/node_modules /node_modules
+COPY --from=builder /app/node_modules ./node_modules
 
-COPY . .
+COPY happy-card/ .
 
 EXPOSE 1557
 
