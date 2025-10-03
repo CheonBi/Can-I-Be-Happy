@@ -21,7 +21,7 @@ jobs:
 
       # Docker image build & push
       - name: Build and push Docker image
-        uses: docker/build-and-push-action@v5
+        uses: docker/build-push-action@v5
         with:
           context: .
           file: ./happy.dockerfile
@@ -38,4 +38,4 @@ jobs:
           port: 22
           # run deploy shell script
           script: |
-            ~/deploy.sh
+            ~/happy_deploy.sh
