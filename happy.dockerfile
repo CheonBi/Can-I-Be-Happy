@@ -1,6 +1,6 @@
 FROM node:22.20.0 AS builder
  
-WORKDIR /happy-card
+WORKDIR ./happy-card
 
 COPY package.json package-lock.json ./
 
@@ -8,9 +8,9 @@ RUN npm install --omit=dev
 
 FROM node:22.20.0
 
-WORKDIR /happy-card
+WORKDIR ./happy-card
 
-COPY --from=builder /happy-card/node_modules /node_modules
+COPY --from=builder ./happy-card/node_modules /node_modules
 
 COPY . .
 
