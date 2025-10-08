@@ -14,6 +14,8 @@ COPY --from=builder /app/node_modules ./node_modules
 
 COPY happy-card/ .
 
-EXPOSE 1557
+RUN npm run build
 
-CMD ["npm", "start"]
+EXPOSE 80
+
+CMD ["npm", "run"]
